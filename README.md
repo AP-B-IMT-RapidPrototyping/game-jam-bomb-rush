@@ -6,6 +6,7 @@
 ## Summary
 Dood de tegenstanders en rek zolang lang mogenlijk tijd.
 ## Genre
+Sidescroll shooter game
 
 ## Concept Pitch
 Je bent een soldaat met een tijdbom op je rug. Versla de tegenstanders om meer tijd te winnen en je uiteindelijke doem zo lang mogelijk te vermijden.
@@ -18,7 +19,7 @@ Zolang mogelijk overleven. En dan opnieuw.
 ### Game Feel
 
 ### Gameplay
-uitdagingen/puzzel structuur, doelen, play flow
+tijdsdruk, stress management
 
 ### Mechanics
-Impliciete/expliciete spelregels, physics/actions/economy/etc.
+Lopen, schieten, springen en doodgaan
