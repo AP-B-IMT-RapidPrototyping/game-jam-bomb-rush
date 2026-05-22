@@ -10,14 +10,10 @@ class Timer {
 public:
     Timer();
     void DrawTimer();
-    void UpdateTimer();
-    void StartTimer(double lifetime);
-    bool TimerDone();
-    double GetElapsed();
+    void DrawTimerBackwards();
+private:
     double startTime;
     double lifeTime;
-    std::string time;
-private:
 };
 
 

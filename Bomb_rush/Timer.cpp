@@ -12,26 +12,11 @@ Timer::Timer() {
 }
 
 void Timer::DrawTimer() {
-
     DrawText(TextFormat("Elapsed Time: %02.02f s", GetTime()), 10, 10, 30, BLACK);
 }
 
-void Timer::UpdateTimer() {
-
-}
-
-void Timer::StartTimer(double lifetime)
-{
-    this->startTime = GetTime();
-    this->lifeTime = lifetime;
-}
-
-bool Timer::TimerDone()
-{
-    return GetTime() - this->startTime >= this->lifeTime;
-}
-
-double Timer::GetElapsed()
-{
-    return GetTime() - this->startTime;
+void Timer::DrawTimerBackwards() {
+    startTime = 60;
+    lifeTime = startTime - GetTime();
+    DrawText(TextFormat("Time Remaining: %02.02f s", lifeTime), 10, 10, 30, BLACK);
 }

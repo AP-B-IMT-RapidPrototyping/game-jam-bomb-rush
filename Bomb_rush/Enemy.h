@@ -13,14 +13,15 @@ class Enemy {
 public:
     Enemy();
     void Draw();
-    void Update(bool isColliding, Bullet bullet);
+    void Update(Bullet bullet);
     Vector2 GetPos();
     ~Enemy();
 private:
     int hp;
     Vector2 position;
-    int width;
-    int height;
+    float width;
+    float height;
+    Rectangle body;
 
 
 

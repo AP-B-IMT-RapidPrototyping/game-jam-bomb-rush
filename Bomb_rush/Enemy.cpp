@@ -10,21 +10,24 @@
 Enemy::Enemy() {
     hp = 100;
     position = {200,200};
-    width = 100;
+    width = 50;
     height = 100;
+    body = {position.x,position.y,width,height};
 }
 
 void Enemy::Draw() {
-    DrawRectangle(position.x,position.y,width,height,RED);
+    DrawRectangleRec(body,RED);
 }
 
-void Enemy::Update(bool isColliding, Bullet bullet) {
-    if (bullet.GetPos().x >= position.x && bullet.GetPos().x <= position.x+width && bullet.GetPos().y >= position.y && bullet.GetPos().y <= position.y+height) {
-        isColliding = true;
-    }
-    isColliding = false;
-    if (isColliding) {
+void Enemy::Update(Bullet bullet) {
+    if (CheckCollisionRecs(bullet.GetBody(),body)) {
         std::cout << "yooo";
+        if (hp>0) {
+            bullet.GetDamage()-hp;
+        }
+    }
+    if (hp<=0) {
+        delete this;
     }
 }
 
@@ -33,5 +36,5 @@ Vector2 Enemy::GetPos() {
 }
 
 Enemy::~Enemy() {
-
+    delete this;
 }

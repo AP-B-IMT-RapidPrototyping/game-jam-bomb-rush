@@ -6,13 +6,16 @@
 
 #include "Player.h"
 
-Bullet::Bullet(Vector2 playerPos) {
+Bullet::Bullet(Player player) {
+    Vector2 playerPos = player.GetPos();
     position = {playerPos.x,playerPos.y};
     velocity = 10;
+    damage = 10;
+    body = {position.x,position.y,20,10};
 }
 
 void Bullet::Draw() {
-    DrawRectangle(position.x,position.y,20,10,BLACK);
+    DrawRectangleRec(body,BLACK);
 
 }
 
@@ -20,8 +23,12 @@ void Bullet::Update() {
     position.x+=velocity;
 }
 
-Vector2 Bullet::GetPos() {
-    return position;
+Rectangle Bullet::GetBody() {
+    return body;
+}
+
+int Bullet::GetDamage() {
+    return damage;
 }
 
 

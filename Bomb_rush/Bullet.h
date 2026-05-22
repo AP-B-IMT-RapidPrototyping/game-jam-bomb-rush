@@ -4,18 +4,21 @@
 
 #pragma once
 #include <raylib.h>
-
+#include "Player.h"
 
 class Bullet {
 public:
-    Bullet(Vector2 playerPos);
+    Bullet(Player playerPos);
     void Draw();
     void Update();
-    Vector2 GetPos();
+    Rectangle GetBody();
+    int GetDamage();
     ~Bullet();
 private:
     Vector2 position;
     int velocity;
+    int damage;
+    Rectangle body;
 };
 
 
