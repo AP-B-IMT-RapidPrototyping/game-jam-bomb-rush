@@ -13,6 +13,10 @@ Player::Player() {
 }
 
 void Player::Update(Map *envItems, int envItemsLength, float delta) {
+    if (IsKeyPressed(MOUSE_BUTTON_LEFT)) {
+        Shoot();
+    }
+
     if (IsKeyDown(KEY_A)) {
         position.x -= 150 * delta;
         lookingLeft = true;
@@ -21,7 +25,7 @@ void Player::Update(Map *envItems, int envItemsLength, float delta) {
         position.x += 150 * delta;
         lookingLeft = false;
     }
-    if (IsKeyPressed(KEY_W) && canJump) {
+    if (IsKeyPressed(KEY_SPACE) && canJump) {
         speed = -350;
         canJump = false;
     }
@@ -57,5 +61,5 @@ Vector2 Player::GetPos() {
 }
 
 void Player::Shoot() {
-
+    
 }
