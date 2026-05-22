@@ -4,6 +4,7 @@
 
 #pragma once
 #include <iostream>
+#include <vector>
 
 #include "Bullet.h"
 #include "raylib.h"
@@ -18,6 +19,7 @@ public:
     ~Enemy();
 private:
     int hp;
+    std::vector<Vector2> spawnPoints;
     Vector2 position;
     float width;
     float height;

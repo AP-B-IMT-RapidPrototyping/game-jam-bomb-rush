@@ -8,11 +8,15 @@
 
 #include "Player.h"
 
-Bullet::Bullet(Vector2 playerPos) {
+Bullet::Bullet(Vector2 playerPos,bool lookingLeft) {
     position = {playerPos.x,playerPos.y};
-    velocity = 10;
+    if (lookingLeft) {
+        velocity = -5;
+    }else {
+        velocity = 5;
+    }
     damage = 100;
-    body = {position.x,position.y-275,20,10};
+    body = {position.x,position.y-25,20,10};
 }
 
 void Bullet::Draw() {
@@ -20,6 +24,7 @@ void Bullet::Draw() {
 }
 
 void Bullet::Update() {
+
     body.x+=velocity;
 }
 

@@ -19,4 +19,8 @@ void Timer::DrawTimerBackwards() {
     startTime = 60;
     lifeTime = startTime - GetTime();
     DrawText(TextFormat("Time Remaining: %02.02f s", lifeTime), 350, 10, 30, BLACK);
+    if (lifeTime <=0) {
+        DrawText("GAME OVER",200,200,50,BLACK);
+        lifeTime=0;
+    }
 }

@@ -9,7 +9,7 @@
 
 Enemy::Enemy() {
     hp = 100;
-    position = {500,250};
+    position = {510,250};
     width = 20;
     height = 40;
     body = {position.x,position.y,width,height};
@@ -23,11 +23,12 @@ void Enemy::Update(Bullet bullet) {
     if (CheckCollisionRecs(bullet.GetBody(),body)) {
         std::cout << "yooo";
         if (hp>0) {
-            hp-=100;
+            hp-=bullet.GetDamage();
         }
         else{
             std::cout << "dede";
-            
+            width = 0;
+            height = 0;
         }
     }
 }

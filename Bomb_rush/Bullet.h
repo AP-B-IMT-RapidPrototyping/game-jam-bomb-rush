@@ -8,7 +8,7 @@
 
 class Bullet {
 public:
-    Bullet(Vector2 playerPos);
+    Bullet(Vector2 playerPos,bool lookingLeft);
     void Draw();
     void Update();
     int GetVelocity();
