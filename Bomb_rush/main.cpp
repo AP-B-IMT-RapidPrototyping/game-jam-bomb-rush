@@ -1,4 +1,5 @@
 #include <iostream>
+#include "raylib.h"
 
 //file(COPY "Assets" DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 //voor cmakelists als we assets nodig gaan hebben

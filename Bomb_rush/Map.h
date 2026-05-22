@@ -1,13 +1,17 @@
 //
 // Created by jorga on 22/05/2026.
 //
-
-#ifndef BOMB_RUSH_MAP_H
-#define BOMB_RUSH_MAP_H
+#pragma once
+#include "raylib.h"
 
 
 class Map {
+    Vector2 position = {0, 0};
+
+public:
+    void Draw();
+
+    void Update();
+
+
 };
-
-
-#endif //BOMB_RUSH_MAP_H
