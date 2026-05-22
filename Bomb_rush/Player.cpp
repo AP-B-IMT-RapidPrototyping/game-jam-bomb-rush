@@ -14,15 +14,15 @@ Player::Player() {
 
 void Player::Update(Map *envItems, int envItemsLength, float delta) {
     if (IsKeyDown(KEY_A)) {
-        position.x -= 150 * delta;
+        position.x -= 250 * delta;
         lookingLeft = true;
     }
     if (IsKeyDown(KEY_D)) {
-        position.x += 150 * delta;
+        position.x += 250 * delta;
         lookingLeft = false;
     }
     if (IsKeyPressed(KEY_SPACE) && canJump) {
-        speed = -350;
+        speed = -500;
         canJump = false;
     }
 
@@ -44,7 +44,7 @@ void Player::Update(Map *envItems, int envItemsLength, float delta) {
 
     if (!hitObstacle) {
         position.y += speed*delta;
-        speed += 500*delta;
+        speed += 750*delta;
         canJump = false;
     }
     else {

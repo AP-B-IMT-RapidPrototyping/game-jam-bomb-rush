@@ -68,8 +68,11 @@ int main() {
         player.Update(envItems, envItemsLength, deltaTime);
         UpdateCameraMovement(&camera, &player, envItems, envItemsLength, deltaTime, screenWidth, screenHeight);
 
-        if (IsKeyPressed(MOUSE_BUTTON_LEFT)) {
+        if (IsKeyPressed(KEY_E)) {
             bullets.push_back(new Bullet(player.position, player.lookingLeft));
+        }
+        for (int i = 0; i < bullets.size(); i++) {
+            bullets[i]->Update();
         }
 
         BeginDrawing();
@@ -80,6 +83,11 @@ int main() {
         for (int i = 0; i < envItemsLength; i++) {
             DrawRectangleRec(envItems[i].rect, envItems[i].color);
         }
+
+        for (int i = 0; i < bullets.size(); i++) {
+            bullets[i]->Draw();
+        }
+
 
         player.playerRect = {player.position.x - 15, player.position.y -50, 30, 50};
         DrawRectangleRec(player.playerRect, BLUE);
