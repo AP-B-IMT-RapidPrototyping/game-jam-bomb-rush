@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iostream>
 
 #include "Bullet.h"
@@ -9,6 +10,28 @@
 
 //file(COPY "Assets" DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 //voor cmakelists als we assets nodig gaan hebben
+
+void UpdateCameraMovement(Camera2D *camera, Player *player, Map *envItems, int envItemsLength, float delta, int width, int height) {
+    camera->target = player->position;
+    camera->offset = (Vector2){ width/2.0f, height/2.0f };
+    float minX = 1000, minY = 1000, maxX=-1000, maxY=-1000;
+
+    for (int i = 0; i < envItemsLength; i++) {
+        Map *ei = envItems + i;
+        minX = fminf(ei->rect.x, minX);
+        maxX = fmaxf(ei->rect.x + ei->rect.width, maxX);
+        minY = fminf(ei->rect.y, minY);
+        maxY = fmaxf(ei->rect.y + ei->rect.height, maxY);
+    }
+
+    Vector2 max = GetWorldToScreen2D({maxX, maxY}, *camera);
+    Vector2 min = GetWorldToScreen2D({minX, minY}, *camera);
+
+    if (max.x < width) camera->offset.x = width - (max.x - (float)width/2);
+    if (max.y < width) camera->offset.y = height - (max.y - (float)height/2);
+    if (min.x > 0) camera->offset.x = (float)width/2 - min.x;
+    if (max.y > 0) camera->offset.y = (float)height/2 - min.y;
+}
 
 int main() {
     const int screenWidth = 800;
@@ -42,6 +65,7 @@ int main() {
         float deltaTime = GetFrameTime();
 
         player.Update(envItems, envItemsLength, deltaTime);
+        UpdateCameraMovement(&camera, &player, envItems, envItemsLength, deltaTime, screenWidth, screenHeight);
 
         BeginDrawing();
         ClearBackground(BLACK);
