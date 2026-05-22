@@ -14,7 +14,7 @@ class Enemy {
 public:
     Enemy();
     void Draw();
-    void Update(Bullet bullet);
+    void Update(std::vector<Bullet> bullets);
     Vector2 GetPos();
     ~Enemy();
 private:

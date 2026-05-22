@@ -19,16 +19,16 @@ void Enemy::Draw() {
     DrawRectangleRec(body,RED);
 }
 
-void Enemy::Update(Bullet bullet) {
-    if (CheckCollisionRecs(bullet.GetBody(),body)) {
-        std::cout << "yooo";
-        if (hp>0) {
-            hp-=bullet.GetDamage();
-        }
-        else{
-            std::cout << "dede";
-            width = 0;
-            height = 0;
+void Enemy::Update(std::vector<Bullet> bullets) {
+    for (int i=0;i<bullets.size();i++){
+        if (CheckCollisionRecs(bullets[i].GetBody(),body)) {
+            if (hp>0) {
+                hp-=bullets[i].GetDamage();
+            }
+            else{
+                width = 0;
+                height = 0;
+            }
         }
     }
 }
