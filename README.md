@@ -4,17 +4,16 @@
 ## Bomb rush
 
 ## Summary
-een overzicht van het volledige spel.
-
+Dood de tegenstanders en rek zolang lang mogenlijk tijd.
 ## Genre
 
 ## Concept Pitch
-in 1-3 zinnen
+Je bent een soldaat met een tijdbom op je rug. Versla de tegenstanders om meer tijd te winnen en je uiteindelijke doem zo lang mogelijk te vermijden.
 
 ## Gameplay Mechanics
 
 ### Game Flow
-gameplay loop
+Zolang mogelijk overleven. En dan opnieuw.
 
 ### Game Feel
 
