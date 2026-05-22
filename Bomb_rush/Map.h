@@ -6,12 +6,11 @@
 
 
 class Map {
-    Vector2 position = {0, 0};
+    Vector2 position = {0, 550};
 
 public:
     void Draw();
 
     void Update();
-
 
 };
