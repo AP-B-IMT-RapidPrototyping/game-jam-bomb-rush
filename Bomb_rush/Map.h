@@ -6,11 +6,11 @@
 
 
 class Map {
-    Vector2 position = {-800, 550};
+    Vector2 position;
 
 public:
+    Map();
     void Draw();
-
     void Update();
-
+    ~Map();
 };

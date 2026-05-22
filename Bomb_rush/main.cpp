@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Map.h"
+#include "Player.h"
 #include "raylib.h"
 #include "Timer.h"
 
@@ -12,11 +13,13 @@ int main() {
     SetTargetFPS(60);
     Map *map = new Map();
     Timer timer = Timer();
+    Player *player = new Player();
 
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(BLACK);
         map->Draw();
+        player->Draw();
         map->Update();
         DrawText(TextFormat("Elapsed Time: %02.02f s", GetTime()), 10, 10, 30, BLACK);
 
@@ -24,4 +27,3 @@ int main() {
     }
     return 0;
 }
-
