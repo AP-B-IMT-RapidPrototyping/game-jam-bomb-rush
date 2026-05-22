@@ -5,13 +5,15 @@
 //voor cmakelists als we assets nodig gaan hebben
 
 int main() {
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+    InitWindow(800,600,"Bomb Rush");
+    SetTargetFPS(60);
+    while (!WindowShouldClose()) {
+        BeginDrawing();
 
-    for (int i = 1; i <= 5; i++) {
-        std::cout << "i = " << i << std::endl;
+
+
+        EndDrawing();
     }
-
     return 0;
 }
 
