@@ -1,5 +1,8 @@
 #include <iostream>
 
+//file(COPY "Assets" DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+//voor cmakelists als we assets nodig gaan hebben
+
 int main() {
     auto lang = "C++";
     std::cout << "Hello and welcome to " << lang << "!\n";
@@ -10,3 +13,4 @@ int main() {
 
     return 0;
 }
+
