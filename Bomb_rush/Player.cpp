@@ -57,5 +57,5 @@ Vector2 Player::GetPos() {
 }
 
 void Player::Shoot() {
-    Bullet bullet = Bullet();
+
 }
