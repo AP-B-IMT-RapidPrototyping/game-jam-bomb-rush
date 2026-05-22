@@ -94,7 +94,6 @@ int main() {
         DrawCircleV(player.position, 5.0f, GOLD);
 
         EndMode2D();
-        timer->DrawTimerBackwards();
         timer->DrawTimer();
         enemy->Draw();
         enemy->Update(bullets);

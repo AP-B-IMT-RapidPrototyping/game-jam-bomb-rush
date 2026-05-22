@@ -8,13 +8,14 @@
 
 #include "Bullet.h"
 #include "raylib.h"
+#include "Timer.h"
 
 
 class Enemy {
 public:
     Enemy();
     void Draw();
-    void Update(std::vector<Bullet*> bullets);
+    void Update(std::vector<Bullet*> bullets,Timer timer);
     Vector2 GetPos();
     ~Enemy();
 private:

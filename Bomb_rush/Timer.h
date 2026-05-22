@@ -10,10 +10,11 @@ class Timer {
 public:
     Timer();
     void DrawTimer();
-    void DrawTimerBackwards();
+    double GetLifeTime();
 private:
     double startTime;
     double lifeTime;
+    double current;
 };
 
 

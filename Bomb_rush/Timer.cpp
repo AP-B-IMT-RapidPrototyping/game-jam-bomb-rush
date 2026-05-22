@@ -12,15 +12,22 @@ Timer::Timer() {
 }
 
 void Timer::DrawTimer() {
-    DrawText(TextFormat("Elapsed Time: %02.02f s", GetTime()), 10, 10, 30, BLACK);
-}
 
-void Timer::DrawTimerBackwards() {
-    startTime = 60;
+    startTime = 3;
     lifeTime = startTime - GetTime();
-    DrawText(TextFormat("Time Remaining: %02.02f s", lifeTime), 350, 10, 30, BLACK);
+    current = GetTime();
+    if (lifeTime>0) {
+        DrawText(TextFormat("Time Remaining: %02.02f s", lifeTime), 450, 10, 30, BLACK);
+        DrawText(TextFormat("Elapsed Time: %02.02f s", GetTime()), 10, 10, 30, BLACK);
+    }
     if (lifeTime <=0) {
         DrawText("GAME OVER",200,200,50,BLACK);
-        lifeTime=0;
+        current += lifeTime;
+        DrawText(TextFormat("Time Remaining: %02.02f s", 0), 450, 10, 30, BLACK);
+        DrawText(TextFormat("Elapsed Time: %02.02f s", current), 10, 10, 30, BLACK);
     }
+}
+
+double Timer::GetLifeTime() {
+    return lifeTime;
 }

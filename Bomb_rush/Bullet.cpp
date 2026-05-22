@@ -11,9 +11,9 @@
 Bullet::Bullet(Vector2 playerPos,bool lookingLeft) {
     position = {playerPos.x,playerPos.y};
     if (lookingLeft) {
-        velocity = -5;
+        velocity = -10;
     }else {
-        velocity = 5;
+        velocity = 10;
     }
     damage = 100;
     body = {position.x,position.y-25,20,10};
@@ -24,7 +24,6 @@ void Bullet::Draw() {
 }
 
 void Bullet::Update() {
-
     body.x+=velocity;
 }
 
