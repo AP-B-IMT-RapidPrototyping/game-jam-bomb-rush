@@ -11,18 +11,27 @@ Timer::Timer() {
     lifeTime = 0;    // Lifetime (seconds)
 }
 
-void StartTimer(Timer *timer, double lifetime)
-{
-    timer->startTime = GetTime();
-    timer->lifeTime = lifetime;
+void Timer::DrawTimer() {
+
+    DrawText(TextFormat("Elapsed Time: %02.02f ms", GetFrameTime()*1000), 200, 220, 20, BLACK);
 }
 
-bool TimerDone(Timer timer)
-{
-    return GetTime() - timer.startTime >= timer.lifeTime;
+void Timer::UpdateTimer() {
+
 }
 
-double GetElapsed(Timer timer)
+void Timer::StartTimer(double lifetime)
 {
-    return GetTime() - timer.startTime;
+    this->startTime = GetTime();
+    this->lifeTime = lifetime;
+}
+
+bool Timer::TimerDone()
+{
+    return GetTime() - this->startTime >= this->lifeTime;
+}
+
+double Timer::GetElapsed()
+{
+    return GetTime() - this->startTime;
 }

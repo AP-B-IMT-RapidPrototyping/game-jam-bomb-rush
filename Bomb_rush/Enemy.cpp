@@ -12,7 +12,7 @@ Enemy::Enemy() {
 }
 
 void Enemy::Draw() {
-    DrawRectangle(position.x,position.y,100,100,BLUE);
+    DrawRectangle(position.x,position.y,100,100,RED);
 }
 
 void Enemy::Update() {
