@@ -7,12 +7,12 @@
 #include "raylib.h"
 
 class Player {
+public:
     Vector2 position;
     float speed;
     bool canJump;
     Rectangle playerRect;
 
-public:
     Player();
     void Draw();
     void Update(Map *envItems, int envItemsLength, float delta);

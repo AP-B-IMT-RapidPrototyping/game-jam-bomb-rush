@@ -5,10 +5,10 @@
 #include "Player.h"
 
 Player::Player() {
-    position = {485, 550};
+    position = {385, 550};
     speed = 0;
     canJump = false;
-    playerRect = {position.x, position.y, 30, 50};
+    playerRect = {position.x - 15, position.y -50, 30, 50};
 }
 
 void Player::Draw() {
@@ -16,10 +16,10 @@ void Player::Draw() {
 }
 
 void Player::Update(Map *envItems, int envItemsLength, float delta) {
-    if (IsKeyDown(KEY_A)) { position.x -= 10 * delta;}
-    if (IsKeyDown(KEY_D)) {position.x += 10 * delta;}
-    if (IsKeyDown(KEY_SPACE) && canJump) {
-        speed = -25;
+    if (IsKeyDown(KEY_A)) { position.x -= 100 * delta;}
+    if (IsKeyDown(KEY_D)) { position.x += 100 * delta;}
+    if (IsKeyPressed(KEY_W) && canJump) {
+        speed = -350;
         canJump = false;
     }
 
@@ -36,13 +36,12 @@ void Player::Update(Map *envItems, int envItemsLength, float delta) {
             hitObstacle = true;
             speed = 0;
             p->y = ei->rect.y;
-            return;
         }
     }
 
     if (!hitObstacle) {
         position.y += speed*delta;
-        speed += 50*delta;
+        speed += 400*delta;
         canJump = false;
     }
     else {
