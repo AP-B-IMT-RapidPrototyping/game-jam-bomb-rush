@@ -69,7 +69,7 @@ int main() {
         UpdateCameraMovement(&camera, &player, envItems, envItemsLength, deltaTime, screenWidth, screenHeight);
 
         if (IsKeyPressed(MOUSE_BUTTON_LEFT)) {
-            bullets = player.Shoot(bullets);
+            bullets.push_back(new Bullet(player.position, player.lookingLeft));
         }
 
         BeginDrawing();

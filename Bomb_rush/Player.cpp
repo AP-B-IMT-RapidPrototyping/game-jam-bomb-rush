@@ -56,7 +56,3 @@ Vector2 Player::GetPos() {
     return position;
 }
 
-std::vector<Bullet*> Player::Shoot(std::vector<Bullet*> bullets) {
-    bullets.push_back(new Bullet(position, lookingLeft));
-    return bullets;
-}

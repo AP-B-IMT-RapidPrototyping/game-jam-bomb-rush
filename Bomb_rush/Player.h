@@ -20,7 +20,6 @@ public:
     Player();
     void Update(Map *envItems, int envItemsLength, float delta);
     Vector2 GetPos();
-    std::vector<Bullet*> Shoot(std::vector<Bullet*>);
 };
 
 
