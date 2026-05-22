@@ -14,3 +14,11 @@ Enemy::Enemy() {
 void Enemy::Draw() {
     DrawRectangle(position.x,position.y,100,100,BLUE);
 }
+
+void Enemy::Update() {
+
+}
+
+Enemy::~Enemy() {
+
+}

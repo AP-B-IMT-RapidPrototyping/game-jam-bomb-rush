@@ -12,6 +12,7 @@ class Enemy {
 public:
     Enemy();
     void Draw();
+    void Update();
     int hp;
     Vector2 position;
     ~Enemy();
