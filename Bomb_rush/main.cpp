@@ -11,7 +11,7 @@
 //file(COPY "Assets" DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 //voor cmakelists als we assets nodig gaan hebben
 
-void UpdateCameraMovement(Camera2D *camera, Player *player, Map *envItems, int envItemsLength, float delta, int width, int height) {
+void UpdateCameraMovement(Camera2D *camera, Player *player, Map *envItems, std::vector<Enemy*>enemies, int envItemsLength, float delta, int width, int height) {
     camera->target = player->position;
     camera->offset = (Vector2){ width/2.0f, height/2.0f };
     float minX = 1000, minY = 1000, maxX=-1000, maxY=-1000;
@@ -42,10 +42,13 @@ int main() {
 
     Player player = Player();
     Map envItems[] = {
-    {{-800, 0, 2400, 600}, 0, BROWN},
+        {{-800, 0, 2400, 600}, 0, LIGHTGRAY},
     {{-800, 550, 2400, 50}, 1, GREEN},
     {{0, 400, 100, 30}, 1, GREEN},
-    {{100, 500, 240, 50}, 1, GREEN}
+    {{200, 450, 240, 30}, 1, GREEN},
+    {{450, 425, 175, 30}, 1, GREEN},
+    {{650, 380, 265, 30}, 1, GREEN},
+    {{1000, 400, 215, 30}, 1, GREEN}
     };
 
     int envItemsLength = sizeof(envItems)/sizeof(envItems[0]);
@@ -57,16 +60,16 @@ int main() {
     camera.zoom = 1.0f;
 
     Timer *timer = new Timer();
-    Enemy *enemy = new Enemy();
 
     std::vector<Bullet*> bullets;
+    std::vector<Enemy*> enemies;
 
 
     while (!WindowShouldClose()) {
         float deltaTime = GetFrameTime();
 
         player.Update(envItems, envItemsLength, deltaTime);
-        UpdateCameraMovement(&camera, &player, envItems, envItemsLength, deltaTime, screenWidth, screenHeight);
+        UpdateCameraMovement(&camera, &player, envItems, enemies, envItemsLength, deltaTime, screenWidth, screenHeight);
 
         if (IsKeyPressed(KEY_E)) {
             bullets.push_back(new Bullet(player.position, player.lookingLeft));
@@ -75,6 +78,12 @@ int main() {
             bullets[i]->Update();
         }
 
+        enemies.push_back(new Enemy({30,360}));
+        enemies.push_back(new Enemy({250,410}));
+        enemies.push_back(new Enemy({500,385}));
+        enemies.push_back(new Enemy({700,340}));
+        enemies.push_back(new Enemy({1100,360}));
+
         BeginDrawing();
         ClearBackground(BLACK);
 
@@ -82,6 +91,9 @@ int main() {
 
         for (int i = 0; i < envItemsLength; i++) {
             DrawRectangleRec(envItems[i].rect, envItems[i].color);
+        }
+        for (int i = 0; i < enemies.size(); i++) {
+            enemies[i]->Draw();
         }
 
         for (int i = 0; i < bullets.size(); i++) {
@@ -95,8 +107,6 @@ int main() {
 
         EndMode2D();
         timer->DrawTimer();
-        enemy->Draw();
-        enemy->Update(bullets);
         EndDrawing();
     }
     return 0;

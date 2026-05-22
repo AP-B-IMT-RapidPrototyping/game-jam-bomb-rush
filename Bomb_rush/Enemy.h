@@ -13,7 +13,7 @@
 
 class Enemy {
 public:
-    Enemy();
+    Enemy(Vector2 pos);
     void Draw();
     void Update(std::vector<Bullet*> bullets,Timer timer);
     Vector2 GetPos();

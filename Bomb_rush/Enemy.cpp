@@ -8,9 +8,9 @@
 #include "Timer.h"
 
 
-Enemy::Enemy() {
+Enemy::Enemy(Vector2 pos) {
     hp = 100;
-    position = {510,250};
+    position = pos;
     width = 20;
     height = 40;
     body = {position.x,position.y,width,height};
