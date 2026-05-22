@@ -13,10 +13,6 @@ Player::Player() {
 }
 
 void Player::Update(Map *envItems, int envItemsLength, float delta) {
-    if (IsKeyPressed(MOUSE_BUTTON_LEFT)) {
-        Shoot();
-    }
-
     if (IsKeyDown(KEY_A)) {
         position.x -= 150 * delta;
         lookingLeft = true;
@@ -60,6 +56,7 @@ Vector2 Player::GetPos() {
     return position;
 }
 
-void Player::Shoot() {
-    
+std::vector<Bullet*> Player::Shoot(std::vector<Bullet*> bullets) {
+    bullets.push_back(new Bullet(position, lookingLeft));
+    return bullets;
 }

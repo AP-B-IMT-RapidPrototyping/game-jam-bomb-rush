@@ -58,7 +58,8 @@ int main() {
 
     Timer *timer = new Timer();
     Enemy *enemy = new Enemy();
-    Bullet *bullet = new Bullet(player.position);
+
+    std::vector<Bullet*> bullets;
 
 
     while (!WindowShouldClose()) {
@@ -66,6 +67,10 @@ int main() {
 
         player.Update(envItems, envItemsLength, deltaTime);
         UpdateCameraMovement(&camera, &player, envItems, envItemsLength, deltaTime, screenWidth, screenHeight);
+
+        if (IsKeyPressed(MOUSE_BUTTON_LEFT)) {
+            bullets = player.Shoot(bullets);
+        }
 
         BeginDrawing();
         ClearBackground(BLACK);
@@ -84,10 +89,7 @@ int main() {
         timer->DrawTimerBackwards();
         timer->DrawTimer();
         enemy->Draw();
-        enemy->Update(*bullet);
-        DrawRectangleRec(bullet->GetBody(),BLACK);
-        bullet->Draw();
-        bullet->Update();
+        enemy->Update(bullets);
         EndDrawing();
     }
     return 0;

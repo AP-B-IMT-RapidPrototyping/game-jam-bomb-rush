@@ -3,6 +3,9 @@
 //
 
 #pragma once
+#include <vector>
+
+#include "Bullet.h"
 #include "Map.h"
 #include "raylib.h"
 
@@ -17,7 +20,7 @@ public:
     Player();
     void Update(Map *envItems, int envItemsLength, float delta);
     Vector2 GetPos();
-    void Shoot();
+    std::vector<Bullet*> Shoot(std::vector<Bullet*>);
 };
 
 
