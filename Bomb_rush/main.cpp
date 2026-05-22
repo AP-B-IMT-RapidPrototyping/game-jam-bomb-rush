@@ -35,7 +35,7 @@ int main() {
 
     Timer *timer = new Timer();
     Enemy *enemy = new Enemy();
-    Bullet *bullet = new Bullet(player);
+    Bullet *bullet = new Bullet(player.position);
 
 
     while (!WindowShouldClose()) {
@@ -60,6 +60,10 @@ int main() {
         timer->DrawTimerBackwards();
         timer->DrawTimer();
         enemy->Draw();
+        enemy->Update(*bullet);
+        DrawRectangleRec(bullet->GetBody(),BLACK);
+        bullet->Draw();
+        bullet->Update();
         EndDrawing();
     }
     return 0;

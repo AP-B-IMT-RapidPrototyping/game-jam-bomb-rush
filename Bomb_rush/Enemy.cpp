@@ -9,7 +9,7 @@
 
 Enemy::Enemy() {
     hp = 100;
-    position = {200,200};
+    position = {500,250};
     width = 20;
     height = 40;
     body = {position.x,position.y,width,height};
@@ -23,11 +23,12 @@ void Enemy::Update(Bullet bullet) {
     if (CheckCollisionRecs(bullet.GetBody(),body)) {
         std::cout << "yooo";
         if (hp>0) {
-            bullet.GetDamage()-hp;
+            hp-=100;
         }
-    }
-    if (hp<=0) {
-        delete this;
+        else{
+            std::cout << "dede";
+            
+        }
     }
 }
 
@@ -36,5 +37,5 @@ Vector2 Enemy::GetPos() {
 }
 
 Enemy::~Enemy() {
-    delete this;
+
 }
