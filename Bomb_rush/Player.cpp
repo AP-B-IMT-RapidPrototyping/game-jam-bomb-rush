@@ -4,13 +4,56 @@
 
 #include "Player.h"
 
-void Player::Draw() {
-    DrawRectangle(position.x, position.y, size.x, size.y, BLUE);
+Player::Player() {
+    position = {485, 550};
+    speed = 0;
+    canJump = false;
+    playerRect = {position.x, position.y, 30, 50};
 }
 
-void Player::Update() {
+void Player::Draw() {
+    DrawRectangleRec(playerRect, BLUE);
+}
+
+void Player::Update(Map *envItems, int envItemsLength, float delta) {
+    if (IsKeyDown(KEY_A)) { position.x -= 10 * delta;}
+    if (IsKeyDown(KEY_D)) {position.x += 10 * delta;}
+    if (IsKeyDown(KEY_SPACE) && canJump) {
+        speed = -25;
+        canJump = false;
+    }
+
+    bool hitObstacle = false;
+    for (int i = 0; i < envItemsLength; i++) {
+        Map *ei = envItems + i;
+        Vector2 *p = &position;
+        if (ei->blocking &&
+            ei->rect.x <= p->x &&
+            ei->rect.x+ei->rect.width >= p->x &&
+            ei->rect.y >= p->y &&
+            ei->rect.y <= p->y + speed*delta)
+        {
+            hitObstacle = true;
+            speed = 0;
+            p->y = ei->rect.y;
+            return;
+        }
+    }
+
+    if (!hitObstacle) {
+        position.y += speed*delta;
+        speed += 50*delta;
+        canJump = false;
+    }
+    else {
+        canJump = true;
+    }
 }
 
 Vector2 Player::GetPos() {
-    return this->position;
+    return position;
+}
+
+void Player::Shoot() {
+
 }

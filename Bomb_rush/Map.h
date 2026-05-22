@@ -6,11 +6,8 @@
 
 
 class Map {
-    Vector2 position;
-
 public:
-    Map();
-    void Draw();
-    void Update();
-    ~Map();
+    Rectangle rect;
+    int blocking;
+    Color color;
 };

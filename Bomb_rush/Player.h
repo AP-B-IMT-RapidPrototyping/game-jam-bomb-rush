@@ -3,15 +3,19 @@
 //
 
 #pragma once
+#include "Map.h"
 #include "raylib.h"
 
 class Player {
-    Vector2 position = {385, 500};
-    Vector2 size = {30, 50};
+    Vector2 position;
+    float speed;
+    bool canJump;
+    Rectangle playerRect;
 
 public:
+    Player();
     void Draw();
-    void Update();
+    void Update(Map *envItems, int envItemsLength, float delta);
     Vector2 GetPos();
     void Shoot();
 };
