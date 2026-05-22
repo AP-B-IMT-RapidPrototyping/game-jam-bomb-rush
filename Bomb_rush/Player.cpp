@@ -3,6 +3,7 @@
 //
 
 #include "Player.h"
+#include "Bullet.h"
 
 Player::Player() {
     position = {385, 550};
@@ -11,13 +12,15 @@ Player::Player() {
     playerRect = {position.x - 15, position.y -50, 30, 50};
 }
 
-void Player::Draw() {
-    DrawRectangleRec(playerRect, BLUE);
-}
-
 void Player::Update(Map *envItems, int envItemsLength, float delta) {
-    if (IsKeyDown(KEY_A)) { position.x -= 100 * delta;}
-    if (IsKeyDown(KEY_D)) { position.x += 100 * delta;}
+    if (IsKeyDown(KEY_A)) {
+        position.x -= 150 * delta;
+        lookingLeft = true;
+    }
+    if (IsKeyDown(KEY_D)) {
+        position.x += 150 * delta;
+        lookingLeft = false;
+    }
     if (IsKeyPressed(KEY_W) && canJump) {
         speed = -350;
         canJump = false;
@@ -41,7 +44,7 @@ void Player::Update(Map *envItems, int envItemsLength, float delta) {
 
     if (!hitObstacle) {
         position.y += speed*delta;
-        speed += 400*delta;
+        speed += 500*delta;
         canJump = false;
     }
     else {
@@ -54,5 +57,5 @@ Vector2 Player::GetPos() {
 }
 
 void Player::Shoot() {
-
+    Bullet bullet = Bullet();
 }

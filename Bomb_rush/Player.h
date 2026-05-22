@@ -12,9 +12,9 @@ public:
     float speed;
     bool canJump;
     Rectangle playerRect;
+    bool lookingLeft;
 
     Player();
-    void Draw();
     void Update(Map *envItems, int envItemsLength, float delta);
     Vector2 GetPos();
     void Shoot();
