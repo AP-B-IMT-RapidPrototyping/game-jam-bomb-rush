@@ -13,10 +13,11 @@ public:
     Enemy();
     void Draw();
     void Update();
-    int hp;
-    Vector2 position;
+    Vector2 GetPos();
     ~Enemy();
 private:
+    int hp;
+    Vector2 position;
 
 
 

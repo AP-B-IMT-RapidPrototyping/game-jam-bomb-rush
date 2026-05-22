@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "Bullet.h"
 #include "Map.h"
 #include "Player.h"
 #include "raylib.h"
@@ -14,6 +15,7 @@ int main() {
     Map *map = new Map();
     Timer timer = Timer();
     Player *player = new Player();
+    Bullet *bullet = new Bullet();
 
     while (!WindowShouldClose()) {
         BeginDrawing();
@@ -22,7 +24,8 @@ int main() {
         player->Draw();
         map->Update();
         DrawText(TextFormat("Elapsed Time: %02.02f s", GetTime()), 10, 10, 30, BLACK);
-
+        bullet->Draw();
+        bullet->Update();
         EndDrawing();
     }
     return 0;
