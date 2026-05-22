@@ -8,13 +8,14 @@
 
 class Bullet {
 public:
-    Bullet();
+    Bullet(Vector2 playerPos);
     void Draw();
     void Update();
+    Vector2 GetPos();
     ~Bullet();
 private:
     Vector2 position;
-    Vector2 velocity;
+    int velocity;
 };
 
 

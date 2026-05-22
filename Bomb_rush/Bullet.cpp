@@ -4,15 +4,26 @@
 
 #include "Bullet.h"
 
-Bullet::Bullet() {
-    position = {100,100};
-    velocity = {10,0};
+#include "Player.h"
+
+Bullet::Bullet(Vector2 playerPos) {
+    position = {playerPos.x,playerPos.y};
+    velocity = 10;
 }
 
 void Bullet::Draw() {
     DrawRectangle(position.x,position.y,20,10,BLACK);
+
 }
 
 void Bullet::Update() {
-    position.x+=velocity.x;
+    position.x+=velocity;
+}
+
+Vector2 Bullet::GetPos() {
+    return position;
+}
+
+
+Bullet::~Bullet() {
 }

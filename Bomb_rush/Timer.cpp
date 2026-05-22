@@ -13,7 +13,7 @@ Timer::Timer() {
 
 void Timer::DrawTimer() {
 
-    DrawText(TextFormat("Elapsed Time: %02.02f ms", GetFrameTime()*1000), 200, 220, 20, BLACK);
+    DrawText(TextFormat("Elapsed Time: %02.02f s", GetTime()), 10, 10, 30, BLACK);
 }
 
 void Timer::UpdateTimer() {
