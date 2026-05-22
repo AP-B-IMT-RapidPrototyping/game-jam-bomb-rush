@@ -10,8 +10,8 @@
 Enemy::Enemy() {
     hp = 100;
     position = {200,200};
-    width = 50;
-    height = 100;
+    width = 20;
+    height = 40;
     body = {position.x,position.y,width,height};
 }
 

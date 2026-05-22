@@ -35,6 +35,7 @@ int main() {
 
     Timer *timer = new Timer();
     Enemy *enemy = new Enemy();
+    Bullet *bullet = new Bullet(player);
 
 
     while (!WindowShouldClose()) {
@@ -56,7 +57,7 @@ int main() {
         DrawCircleV(player.position, 5.0f, GOLD);
 
         EndMode2D();
-
+        timer->DrawTimerBackwards();
         timer->DrawTimer();
         enemy->Draw();
         EndDrawing();

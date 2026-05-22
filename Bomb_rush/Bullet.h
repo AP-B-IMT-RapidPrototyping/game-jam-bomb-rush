@@ -8,9 +8,10 @@
 
 class Bullet {
 public:
-    Bullet(Player playerPos);
+    Bullet(Vector2 playerPos);
     void Draw();
     void Update();
+    int GetVelocity();
     Rectangle GetBody();
     int GetDamage();
     ~Bullet();

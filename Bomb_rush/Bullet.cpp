@@ -6,8 +6,7 @@
 
 #include "Player.h"
 
-Bullet::Bullet(Player player) {
-    Vector2 playerPos = player.GetPos();
+Bullet::Bullet(Vector2 playerPos) {
     position = {playerPos.x,playerPos.y};
     velocity = 10;
     damage = 10;
@@ -21,6 +20,10 @@ void Bullet::Draw() {
 
 void Bullet::Update() {
     position.x+=velocity;
+}
+
+int Bullet::GetVelocity() {
+    return velocity;
 }
 
 Rectangle Bullet::GetBody() {

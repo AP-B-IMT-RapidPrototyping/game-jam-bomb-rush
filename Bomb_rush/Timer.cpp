@@ -18,5 +18,5 @@ void Timer::DrawTimer() {
 void Timer::DrawTimerBackwards() {
     startTime = 60;
     lifeTime = startTime - GetTime();
-    DrawText(TextFormat("Time Remaining: %02.02f s", lifeTime), 10, 10, 30, BLACK);
+    DrawText(TextFormat("Time Remaining: %02.02f s", lifeTime), 350, 10, 30, BLACK);
 }
