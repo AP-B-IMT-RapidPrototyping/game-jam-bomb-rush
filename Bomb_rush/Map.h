@@ -6,7 +6,7 @@
 
 
 class Map {
-    Vector2 position = {0, 550};
+    Vector2 position = {-800, 550};
 
 public:
     void Draw();
